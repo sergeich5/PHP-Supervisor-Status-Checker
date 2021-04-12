@@ -1,0 +1,7 @@
+{
+    "name": "sergeich5/php-supervisor-status-checker",
+    "description": "Simple tool to check supervisor's processes statuses",
+    "type": "library",
+    "version": "1.0",
+    "require": {}
+}
