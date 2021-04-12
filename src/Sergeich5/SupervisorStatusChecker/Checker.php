@@ -79,8 +79,11 @@ class Checker
 
         while (true) {
             $this->logger('Check loop tick');
+            $this->callback->onBeforeTick();
 
             $this->checkOnce();
+
+            $this->callback->onAfterTick();
             sleep($this->delay);
         }
     }
