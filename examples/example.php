@@ -2,8 +2,24 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+/* See ../src/Sergeich5/SupervisorStatusChecker/Callback/CallbackHandlerInterface.php */
+
 class MyCallbackHandler extends \Sergeich5\SupervisorStatusChecker\Callback\CallbackHandler
 {
+    function onBeforeTick()
+    {
+        echo 'onBeforeTick' . PHP_EOL;
+
+        // YOUR LOGIC HERE
+    }
+
+    function onAfterTick()
+    {
+        echo 'onAfterTick' . PHP_EOL;
+
+        // YOUR LOGIC HERE
+    }
+
     function onFatal(string $processName)
     {
         echo sprintf('Got fatal on proc %s', $processName) . PHP_EOL;
