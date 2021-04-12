@@ -8,11 +8,15 @@ class MyCallbackHandler extends \Sergeich5\SupervisorStatusChecker\Callback\Call
 {
     function onBeforeTick()
     {
+        echo 'onBeforeTick' . PHP_EOL;
+
         // YOUR LOGIC HERE
     }
 
     function onAfterTick()
     {
+        echo 'onAfterTick' . PHP_EOL;
+
         // YOUR LOGIC HERE
     }
 
