@@ -3,5 +3,10 @@
     "description": "Simple tool to check supervisor's processes statuses",
     "type": "library",
     "version": "1.0",
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-0": {
+            "Sergeich5": "src"
+        }
+    }
 }
