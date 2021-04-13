@@ -2,15 +2,12 @@
 
 namespace Sergeich5\SupervisorStatusChecker;
 
-use Sergeich5\SupervisorStatusChecker\Callback\CallbackHandler;
+use Sergeich5\SupervisorStatusChecker\Callback\CallbackHandlerInterface;
 use Sergeich5\SupervisorStatusChecker\Enums\Statuses;
 
 class Checker
 {
-    /* @var int $delay */
-    private $delay;
-
-    /* @var CallbackHandler $callback */
+    /* @var CallbackHandlerInterface $callback */
     private $callback;
 
     /* @var bool $onChangeOnly */
@@ -22,10 +19,9 @@ class Checker
     /* @var bool $debug */
     private $debug;
 
-    function __construct(CallbackHandler $callback, int $delaySeconds = 5, bool $onChangeOnly = true, bool $debug = false)
+    function __construct(CallbackHandlerInterface $callback, bool $onChangeOnly = true, bool $debug = false)
     {
         $this->callback = $callback;
-        $this->delay = $delaySeconds;
         $this->onChangeOnly = $onChangeOnly;
         $this->debug = $debug;
 
@@ -73,7 +69,7 @@ class Checker
     }
 
     /* @return void */
-    function checkLoop()
+    function checkLoop(int $delaySeconds = 5)
     {
         $this->logger('Checking in loop now');
 
@@ -84,7 +80,7 @@ class Checker
             $this->checkOnce();
 
             $this->callback->onAfterTick();
-            sleep($this->delay);
+            sleep($delaySeconds);
         }
     }
 

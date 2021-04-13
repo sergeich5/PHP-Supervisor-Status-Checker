@@ -54,12 +54,18 @@ class MyCallbackHandler extends \Sergeich5\SupervisorStatusChecker\Callback\Call
 
         // YOUR LOGIC HERE
     }
+
+    function onUnknown(string $processName, string $status)
+    {
+        echo sprintf('Got unknown status %s on proc %s', $status, $processName) . PHP_EOL;
+
+        // YOUR LOGIC HERE
+    }
 }
 
 $loop = new \Sergeich5\SupervisorStatusChecker\Checker(
     new MyCallbackHandler(),
-    5,
     true,
     false
 );
-$loop->checkLoop();
+$loop->checkLoop(10);

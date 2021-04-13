@@ -19,4 +19,6 @@ abstract class CallbackHandler implements CallbackHandlerInterface
     function onStarting(string $processName) {}
 
     function onStopped(string $processName) {}
+
+    function onUnknown(string $processName, string $status) {}
 }

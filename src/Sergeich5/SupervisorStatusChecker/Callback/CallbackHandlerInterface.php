@@ -52,4 +52,11 @@ interface CallbackHandlerInterface
      * @return void
      */
     function onStopped(string $processName);
+
+    /**
+     * Triggers when supervisor process has unknown status
+     *
+     * @return void
+     */
+    function onUnknown(string $processName, string $status);
 }
