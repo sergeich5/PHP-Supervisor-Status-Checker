@@ -8,7 +8,7 @@ Simple tool to check supervisor's processes statuses. You can receive events on 
 
 ## Usage
 
-1) Create your own class and extend it from `\Sergeich5\SupervisorStatusChecker\Callback\CallbackHandler`
+1) Create your own class and extend it from `\Sergeich5\SupervisorStatusChecker\Callback\CallbackHandler` or implement from `\Sergeich5\SupervisorStatusChecker\Callback\CallbackHandlerInterface`
 
 ```php
 <?php
@@ -51,6 +51,11 @@ class MyCallbackHandler extends \Sergeich5\SupervisorStatusChecker\Callback\Call
     {
         // YOUR LOGIC HERE
     }
+
+    function onUnknown(string $processName, string $status)
+    {
+        // YOUR LOGIC HERE
+    }
 }
 ```
 
@@ -61,16 +66,15 @@ class MyCallbackHandler extends \Sergeich5\SupervisorStatusChecker\Callback\Call
 ```php
 $loop = new \Sergeich5\SupervisorStatusChecker\Checker(
     new MyCallbackHandler(),
-    5,
     true,
     false
 );
 ```
 
-4) Call method `checkLoop()` for automatically check
+4) Call method `checkLoop(int DELAY_IN_SECONDS)` for automatically check
 
 ```php
-$loop->checkLoop();
+$loop->checkLoop( int DELAY_IN_SECONDS );
 ```
 
 or `checkOnce()` for one-time check
